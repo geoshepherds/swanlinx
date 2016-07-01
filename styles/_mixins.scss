@@ -1,0 +1,3 @@
+@mixin transition($prop, $time) {
+    transition: unquote($prop) unquote($time + 's') cubic-bezier(.74, 0, .26, 1);
+}

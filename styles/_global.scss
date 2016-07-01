@@ -1,0 +1,171 @@
+// General Styles //
+
+body {
+    font-family: 'Abel', sans-serif;
+    font-size: $font-size;
+    background: $white;
+    text-rendering: optimizeLegibility;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: $font-size * 2.5;
+    text-transform: uppercase;
+    letter-spacing: 3.5px;
+    margin-bottom: $margin-base / 2;
+}    
+h3 {
+    font-size: $font-size;
+    letter-spacing: 1px;
+}
+
+
+
+@media all and (orientation: portrait) {
+    
+    .user-rotate {
+        background-image: $screen-rotate;
+        background-position: center;
+        background-size: 45px;
+        background-repeat: no-repeat;
+        background-color: $portrait-background;
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        color: $white;
+        z-index: 999;
+        & span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%);
+            margin-top: 48px;
+            text-align: center;
+            font-size: 16px;
+        }
+    }
+    
+    
+}/* Styles for Portrait screen */
+
+@media all and (orientation: landscape) {
+    
+    .user-rotate {
+        display: none;
+    }
+    
+}/* Styles for Landscape screen */
+
+
+// Class Styles //
+
+.map-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: $margin-base * 2;
+    width: 180px;
+    z-index: 998;
+    & h1::after {
+        content: " ";
+        height: 4px;
+        background-color: $black;
+        display: block;
+        width: 170px;
+        margin-top: $margin-base / 3;
+    }
+    & .info-panel-btn {
+        margin-top: $margin-base;
+        opacity: 1;
+        &.hidden {
+            opacity: 0;
+            transition: opacity .3s;
+        }
+        & .info-btn {
+            background-color: $blue;
+            background-image: $info-icon;
+            background-size: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: $btn-height - 10;
+            width: $btn-width - 20;
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
+        }
+    }
+}
+
+.info-panel-container {
+    display: none;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: $white;
+    @include transition('width', .3);
+    &.is-active {
+        display: block;
+        width: 45%;
+        z-index: 997;
+        @include transition('width', .3);
+        & p {
+            margin-top: 120px;
+            padding-left: $margin-base * 2;
+            font-size: $font-size - 2;
+        }
+    }
+}
+
+.layer-panel-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: $margin-base * 2;
+    text-align: center;
+    text-transform: uppercase;
+    color: $white;
+    @include transition('right', .3);
+    .layer-btn {
+        background-color: $blue;
+        background-image: $layer-arrow;
+        background-size: 25%;
+        background-position: 50% 70%;
+        background-repeat: no-repeat;
+        height: $btn-height + 5;
+        width: $btn-width;
+        box-shadow: 0 0 10px rgba(0,0,0,0.4);        
+    }
+    & .btn-label {
+        background-color: darken($blue, 10%);
+        font-size: $font-size - 2;
+        padding-bottom: 4px;
+        padding-top: 4px;
+        width: $btn-width;
+    }
+    &.is-active {
+        right: 33.33%;
+        @include transition('right', .3);
+        & .layer-btn {
+            background-image: $close-icon;
+        }
+    }
+}
+
+.layer-panel-container {
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-color: $blue;
+    @include transition('width', .3);
+    &.is-active {
+        width: 33.33%;
+        z-index: 998;
+        @include transition('width', .3);
+    }
+    
+}
