@@ -1,3 +1,12 @@
 @mixin transition($prop, $time) {
     transition: unquote($prop) unquote($time + 's') cubic-bezier(.74, 0, .26, 1);
 }
+
+@mixin ui-arc {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 75px;
+    width: 75px;
+    height: 100px;
+    position: absolute;
+}

@@ -43,20 +43,48 @@ table {
 
 body {
   font-family: 'Abel', sans-serif;
+  font-weight: 400;
   font-size: 14px;
   background: #fff;
   text-rendering: optimizeLegibility;
   line-height: 1.2; }
+
+.app-wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: hidden; }
 
 h1 {
   font-size: 35px;
   text-transform: uppercase;
   letter-spacing: 3.5px;
   margin-bottom: 6px; }
+  h1::after {
+    content: " ";
+    height: 4px;
+    background-color: #373a3c;
+    display: block;
+    width: 170px;
+    margin-top: 4px; }
+  @media screen and (min-width: 1280px) {
+    h1 {
+      font-size: 42px; }
+      h1::after {
+        width: 190px; } }
 
 h3 {
   font-size: 14px;
   letter-spacing: 1px; }
+  @media screen and (min-width: 1280px) {
+    h3 {
+      font-size: 19.6px; } }
+
+a {
+  color: #fff; }
+
+a.black {
+  color: #373a3c; }
 
 @media all and (orientation: portrait) {
   .user-rotate {
@@ -85,6 +113,77 @@ h3 {
   .user-rotate {
     display: none; } }
 /* Styles for Landscape screen */
+.overlay-helper {
+  opacity: 1;
+  transition: opacity .6s ease-in-out;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  background: rgba(55, 58, 60, 0.8); }
+  .overlay-helper.hidden {
+    opacity: 0; }
+  .overlay-helper .content {
+    padding: 6px;
+    text-align: center; }
+    .overlay-helper .content.layers > p {
+      position: absolute;
+      right: 100px;
+      top: 100px;
+      width: 100px; }
+    .overlay-helper .content.info > p {
+      position: absolute;
+      left: 100px;
+      top: 190px;
+      width: 100px; }
+    .overlay-helper .content .ui-arrow-right, .overlay-helper .content .ui-arrow-left {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 75px;
+      width: 75px;
+      height: 100px;
+      position: absolute; }
+    .overlay-helper .content .ui-arrow-right {
+      background-image: url(/media/arc-arrow-right.svg);
+      right: 80px;
+      top: 20px; }
+    .overlay-helper .content .ui-arrow-left {
+      background-image: url(/media/arc-arrow-left.svg);
+      left: 80px;
+      top: 110px; }
+  .overlay-helper .user-confirm {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    text-transform: uppercase;
+    font-size: 19.6px;
+    display: inline-block;
+    padding: 24px; }
+    .overlay-helper .user-confirm::after {
+      content: " ";
+      height: 2px;
+      background-color: #fff;
+      display: block;
+      width: 50px;
+      margin-top: 4px; }
+    .overlay-helper .user-confirm .ui-arrow {
+      display: inline-block;
+      width: 35px;
+      height: 15px;
+      background-image: url(/media/right-arrow-forward.svg);
+      background-repeat: no-repeat;
+      background-size: 25px 15px;
+      background-position: bottom; }
+
+.map-wrapper {
+  background: #c7c6c6;
+  height: 100%;
+  width: 100%;
+  position: absolute; }
+
 .map-title {
   position: absolute;
   top: 0;
@@ -92,16 +191,10 @@ h3 {
   padding: 24px;
   width: 180px;
   z-index: 998; }
-  .map-title h1::after {
-    content: " ";
-    height: 4px;
-    background-color: #373a3c;
-    display: block;
-    width: 170px;
-    margin-top: 4px; }
   .map-title .info-panel-btn {
     margin-top: 12px;
-    opacity: 1; }
+    opacity: 1;
+    cursor: pointer; }
     .map-title .info-panel-btn.hidden {
       opacity: 0;
       transition: opacity .3s; }
@@ -116,32 +209,71 @@ h3 {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); }
 
 .info-panel-container {
-  display: none;
-  position: absolute;
-  width: 0;
+  position: relative;
   height: 100%;
-  top: 0;
-  left: 0;
-  background-color: #fff;
+  width: 0%;
   transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
+  .info-panel-container .info-panel-content {
+    opacity: 0; }
+    .info-panel-container .info-panel-content p {
+      opacity: 0; }
+    .info-panel-container .info-panel-content .close-btn {
+      opacity: 0; }
   .info-panel-container.is-active {
-    display: block;
-    width: 45%;
+    width: 65%;
     z-index: 997;
     transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
-    .info-panel-container.is-active p {
-      margin-top: 120px;
-      padding-left: 24px;
-      font-size: 12px; }
+    @media screen and (min-width: 768px) {
+      .info-panel-container.is-active {
+        width: 35%; } }
+    .info-panel-container.is-active .info-panel-content {
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #fff; }
+      .info-panel-container.is-active .info-panel-content p {
+        margin-top: 120px;
+        padding-left: 24px;
+        padding-right: 24px;
+        font-size: 12px;
+        opacity: 1;
+        transition: opacity 0.3s cubic-bezier(0.74, 0, 0.26, 1);
+        transition-delay: .3s; }
+      .info-panel-container.is-active .info-panel-content .close-btn {
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 50px;
+        background-image: url(/media/close-button-black.svg);
+        background-repeat: no-repeat;
+        background-size: 25px;
+        background-position: center;
+        opacity: 1;
+        transition: opacity 0.3s cubic-bezier(0.74, 0, 0.26, 1);
+        transition-delay: .6s;
+        cursor: pointer; }
+        .info-panel-container.is-active .info-panel-content .close-btn::after {
+          content: "close";
+          display: block;
+          text-align: center;
+          margin-top: 40px; }
 
 .layer-panel-btn {
   position: absolute;
-  right: 0;
+  right: 0px;
   top: 0;
   margin-top: 24px;
   text-align: center;
   text-transform: uppercase;
   color: #fff;
+  cursor: pointer;
+  z-index: 998;
   transition: right 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
   .layer-panel-btn .layer-btn {
     background-color: #75bad3;
@@ -162,7 +294,7 @@ h3 {
     right: 33.33%;
     transition: right 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
     .layer-panel-btn.is-active .layer-btn {
-      background-image: url(/media/close-button.svg); }
+      background-image: url(/media/close-button-white.svg); }
 
 .layer-panel-container {
   display: block;
@@ -170,12 +302,86 @@ h3 {
   width: 0;
   height: 100%;
   top: 0;
-  right: 0;
+  right: 0px;
   background-color: #75bad3;
   transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
+  .layer-panel-container .layer-panel-content {
+    position: relative;
+    height: 100%;
+    padding: 18px;
+    color: #fff;
+    opacity: 0; }
+    .layer-panel-container .layer-panel-content .layer-title, .layer-panel-container .layer-panel-content .geoshepherds {
+      display: none; }
+    .layer-panel-container .layer-panel-content .layer-instructions {
+      color: #e6e6e6;
+      margin-bottom: 12px;
+      font-size: 12px; }
+    .layer-panel-container .layer-panel-content p {
+      display: none; }
+    .layer-panel-container .layer-panel-content .layer-li {
+      cursor: pointer;
+      text-decoration: underline;
+      margin-bottom: 12px;
+      text-shadow: 0 0 2px #4ea7c7;
+      font-size: 12px; }
+      .layer-panel-container .layer-panel-content .layer-li:last-child {
+        margin-bottom: 36px; }
+      .layer-panel-container .layer-panel-content .layer-li.is-active::before {
+        content: " ";
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
+        background: #307c98;
+        margin-top: 6px;
+        position: absolute;
+        left: 6px; }
   .layer-panel-container.is-active {
     width: 33.33%;
     z-index: 998;
     transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
+    .layer-panel-container.is-active .layer-panel-content {
+      opacity: 1;
+      transition: opacity 0.4ss cubic-bezier(0.74, 0, 0.26, 1);
+      transition-delay: .3s; }
+
+@media screen and (min-width: 768px) {
+  .info-panel-btn, .layer-panel-btn {
+    display: none; }
+
+  .map-wrapper {
+    width: 66.66%; }
+
+  .layer-panel-container {
+    display: block;
+    position: absolute;
+    width: 33.33%;
+    height: 100%;
+    top: 0;
+    right: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); }
+    .layer-panel-container .layer-panel-content {
+      opacity: 1; }
+    .layer-panel-container .layer-panel-content > p {
+      display: block; }
+    .layer-panel-container .layer-panel-content > .layer-title {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 19.6px; }
+    .layer-panel-container .layer-panel-content > .layer-instructions {
+      font-size: 14.7px; }
+    .layer-panel-container .layer-panel-content .layer-li {
+      font-size: 14px; }
+    .layer-panel-container .layer-panel-content > .geoshepherds {
+      display: block;
+      margin-top: 24px; } }
+@media screen and (min-width: 1280px) {
+  .map-wrapper {
+    width: 75%; }
+
+  .layer-panel-container {
+    width: 25%; }
+    .layer-panel-container .layer-panel-content .layer-li {
+      font-size: 15.4px; } }
 
 /*# sourceMappingURL=main.css.map */

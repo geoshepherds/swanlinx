@@ -10,4 +10,17 @@ $(document).ready(function() {
         $('.info-panel-container').addClass('is-active');
     });
     
+    $('.close-btn').click(function() {
+        $('.info-panel-container').removeClass('is-active');
+        $('.info-panel-btn').removeClass('hidden');
+    });
+    
+    $(".layer-li").click(function() {
+        $('.is-active').removeClass('is-active');
+        $(this).addClass('is-active');
+    });
+    
+    $('.user-confirm').click(function() {
+        $(this).parent().addClass('hidden');
+    });
 });

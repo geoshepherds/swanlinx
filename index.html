@@ -6,7 +6,7 @@
 <meta name="description" content="Swanlinx is a surrogate of the Sportslinx project where selected schools from the City and County of Swansea visited the national sports centre for Wales to participate in a fitness fun day.">
 <meta name="keywords" content="Swansea, Swanlinx, Wales, sports, research, activity, children, health, lifestyle, food">
 <meta name="author" content="Geoshepherds">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <!--
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -21,10 +21,8 @@
 <link href="styles/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
-<div class="user-rotate">
-    <span>Please view in landscape</span>
-</div>
+<div class="app-wrapper">
+    <div class="map-wrapper"></div>
 
 <div class="map-title">
     <h1>
@@ -40,9 +38,19 @@
 </div>
 
 <div class="info-panel-container">
-    <p>
-        Swanlinx is a surrogate of the Sportslinx project where selected schools from the City and County of Swansea visited the national sports centre for Wales to participate in a fitness fun day. Children also completed an online questionnaire about their diet, health and lifestyle. To date around 2,000 children have taken part in the programme. Swanlinx is also delivered through a Swansea University, City and County of Swansea partnership and will contribute significantly to the epidemiological evidence on children’s physical activity and health.
-    </p>
+    <div class="info-panel-content">
+        <p>
+            Swanlinx is a surrogate of the Sportslinx project where selected schools from the City and County of Swansea visited the national sports centre for Wales to participate in a fitness fun day. Children also completed an online questionnaire about their diet, health and lifestyle. To date around 2,000 children have taken part in the programme. Swanlinx is also delivered through a
+            <a class="black" href="http://swansea.ac.uk/" target="_blank">
+            Swansea University
+            </a>
+            , 
+            <a class="black" href="http://swansea.gov.uk/" target="_blank">
+            City and County of Swansea
+            </a> partnership and will contribute significantly to the epidemiological evidence on children’s physical activity and health.
+        </p>
+        <div class="close-btn"></div>
+    </div>
 </div>
 
 <div class="legend"></div>
@@ -56,7 +64,70 @@
     </div>
 </div>
     
-<div class="layer-panel-container"></div>
+<div class="layer-panel-container">
+    <div class="layer-panel-content">
+        <div class="layer-title">
+            Layers
+        </div>
+        <div class="layer-instructions">
+            Click a category to view results on the map&#58;
+        </div>
+        <ul class="layer-ul">
+            <li class="layer-li is-active">Body Mass Index &#40;BMI&#41;</li>
+            <li class="layer-li">Hand Grip Strength</li>
+            <li class="layer-li">Bleep Test &#40;Boys&#41;</li>
+            <li class="layer-li">Bleep Test &#40;Girls&#41;</li>
+            <li class="layer-li">Feel About Health</li>
+            <li class="layer-li">Feel About Fitness</li>
+            <li class="layer-li">Fizzy Drink Consumption</li>
+            <li class="layer-li">Fruit and Vegetable Consumption &#40;per day&#41;</li>
+            <li class="layer-li">Sleeping Time &#40;per night&#41;</li>
+        </ul>
+        <div class="layer-title info">
+            Project Information
+        </div>
+        <p>
+            Swanlinx is a surrogate of the Sportslinx project where selected schools from the City and County of Swansea visited the national sports centre for Wales to participate in a fitness fun day. Children also completed an online questionnaire about their diet, health and lifestyle. To date around 2,000 children have taken part in the programme. Swanlinx is also delivered through a
+            <a href="http://swansea.ac.uk/" target="_blank">
+            Swansea University
+            </a>
+            , 
+            <a href="http://swansea.gov.uk/" target="_blank">
+            City and County of Swansea
+            </a> partnership and will contribute significantly to the epidemiological evidence on children’s physical activity and health.
+        </p>
+        <div class="geoshepherds">
+            Visualisation by&#58;
+            <a href="http://geoshepherds.com" target="_blank">
+                Geoshepherds
+            </a>
+        </div>
+    </div>
+    
+</div>
+</div>
+<div class="user-rotate">
+    <span>Please view in landscape</span>
+</div>
+<div class="overlay-helper">
+    <div class="content info">
+        <div class="ui-arrow-left"></div>
+        <p>
+            Click to read more about the project
+        </p>
+    </div>
+    <div class="content layers">
+        <div class="ui-arrow-right"></div>
+        <p>
+            Click to change map layers
+        </p>
+    </div>
+    <div class="user-confirm">
+        got it 
+        <div class="ui-arrow"></div>
+    </div>
+</div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
