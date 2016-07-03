@@ -1,0 +1,5 @@
+@keyframes animate-margin {
+    0% { margin-left: 0px; }
+    50% { margin-left: $margin-base; }
+    100% { margin-left: 0px; }
+}

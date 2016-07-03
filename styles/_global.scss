@@ -43,6 +43,15 @@ h3 {
     }
 }
 
+text {
+    font-family: 'Abel', sans-serif;
+    font-size: $font-size;
+    pointer-events: none;
+    @media screen and (min-width: 768px) {
+        font-size: $font-size;
+    }
+}
+
 a {
     color: $white;
 }
@@ -143,6 +152,7 @@ a.black {
         font-size: $font-size * 1.4;
         display: inline-block;
         padding: $margin-base * 2;
+        cursor: pointer;
         &::after {
             content: " ";
             height: 2px;
@@ -159,12 +169,15 @@ a.black {
             background-repeat: no-repeat;
             background-size: 25px 15px;
             background-position: bottom;
+            animation-name: animate-margin;
+            animation-duration: .8s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
         }
     }
 }
 
-.map-wrapper {
-    background: #c7c6c6;
+#map {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -363,7 +376,7 @@ a.black {
 
 
 @media screen and (min-width: 768px) {
-    .info-panel-btn, .layer-panel-btn {
+    .info-panel-btn, .layer-panel-btn, .overlay-helper {
         display: none;
     }
     
