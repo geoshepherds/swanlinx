@@ -202,6 +202,17 @@ a.black {
   height: 100%;
   width: 100%;
   position: absolute; }
+  #map .legend {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    height: 80px;
+    width: 160px;
+    z-index: 997; }
+    #map .legend .legend-contents {
+      position: relative;
+      padding: 12px; }
 
 .map-title {
   position: absolute;
@@ -368,7 +379,7 @@ a.black {
   .info-panel-btn, .layer-panel-btn, .overlay-helper {
     display: none; }
 
-  .map-wrapper {
+  #map {
     width: 66.66%; }
 
   .layer-panel-container {
@@ -395,7 +406,7 @@ a.black {
       display: block;
       margin-top: 24px; } }
 @media screen and (min-width: 1280px) {
-  .map-wrapper {
+  #map {
     width: 75%; }
 
   .layer-panel-container {
