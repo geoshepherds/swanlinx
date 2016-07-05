@@ -181,19 +181,6 @@ a.black {
     height: 100%;
     width: 100%;
     position: absolute;
-    & .legend {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        background: rgba($white, .8);
-        height: 80px;
-        width: 160px;
-        z-index: 997;
-        & .legend-contents {
-            position: relative;
-            padding: $margin-base;
-        }
-    }
 }
 
 
