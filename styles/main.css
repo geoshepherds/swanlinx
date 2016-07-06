@@ -63,7 +63,7 @@ body {
   overflow-y: hidden; }
 
 h1 {
-  font-size: 35px;
+  font-size: 21px;
   text-transform: uppercase;
   letter-spacing: 3.5px;
   margin-bottom: 6px; }
@@ -72,7 +72,7 @@ h1 {
     height: 4px;
     background-color: #373a3c;
     display: block;
-    width: 170px;
+    width: 120px;
     margin-top: 4px; }
   @media screen and (min-width: 1280px) {
     h1 {
@@ -81,7 +81,7 @@ h1 {
         width: 190px; } }
 
 h3 {
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 1px; }
   @media screen and (min-width: 1280px) {
     h3 {
@@ -89,11 +89,7 @@ h3 {
 
 text {
   font-family: 'Abel', sans-serif;
-  font-size: 14px;
   pointer-events: none; }
-  @media screen and (min-width: 768px) {
-    text {
-      font-size: 14px; } }
 
 a {
   color: #fff; }
@@ -208,8 +204,11 @@ a.black {
   top: 0;
   left: 0;
   padding: 24px;
-  width: 180px;
+  width: 120px;
   z-index: 998; }
+  @media screen and (min-width: 1280px) {
+    .map-title {
+      width: 190px; } }
   .map-title .info-panel-btn {
     margin-top: 12px;
     opacity: 1;
@@ -343,9 +342,15 @@ a.black {
       text-decoration: underline;
       margin-bottom: 12px;
       text-shadow: 0 0 2px #4ea7c7;
-      font-size: 12px; }
+      font-size: 12px;
+      opacity: .7; }
       .layer-panel-container .layer-panel-content .layer-li:last-child {
         margin-bottom: 36px; }
+      @media screen and (max-height: 360px) {
+        .layer-panel-container .layer-panel-content .layer-li {
+          margin-bottom: 8px; } }
+      .layer-panel-container .layer-panel-content .layer-li.is-active {
+        opacity: 1; }
       .layer-panel-container .layer-panel-content .layer-li.is-active::before {
         content: " ";
         width: 5px;
@@ -354,7 +359,8 @@ a.black {
         background: #307c98;
         margin-top: 6px;
         position: absolute;
-        left: 6px; }
+        left: 6px;
+        opacity: 1; }
   .layer-panel-container.is-active {
     width: 33.33%;
     z-index: 998;

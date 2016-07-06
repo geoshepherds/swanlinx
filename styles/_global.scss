@@ -16,7 +16,7 @@ body {
 }
 
 h1 {
-    font-size: $font-size * 2.5;
+    font-size: $font-size * 1.5;
     text-transform: uppercase;
     letter-spacing: 3.5px;
     margin-bottom: $margin-base / 2;
@@ -25,7 +25,7 @@ h1 {
         height: 4px;
         background-color: $black;
         display: block;
-        width: 170px;
+        width: 120px;
         margin-top: $margin-base / 3;
     }
     @media screen and (min-width: 1280px) {
@@ -36,7 +36,7 @@ h1 {
     }
 }    
 h3 {
-    font-size: $font-size;
+    font-size: $font-size - 2;
     letter-spacing: 1px;
     @media screen and (min-width: 1280px) {
         font-size: $font-size * 1.4;
@@ -45,11 +45,7 @@ h3 {
 
 text {
     font-family: 'Abel', sans-serif;
-    font-size: $font-size;
     pointer-events: none;
-    @media screen and (min-width: 768px) {
-        font-size: $font-size;
-    }
 }
 
 a {
@@ -189,8 +185,11 @@ a.black {
     top: 0;
     left: 0;
     padding: $margin-base * 2;
-    width: 180px;
+    width: 120px;
     z-index: 998;
+    @media screen and (min-width: 1280px) {
+        width: 190px;
+    }
     & .info-panel-btn {
         margin-top: $margin-base;
         opacity: 1;
@@ -347,8 +346,15 @@ a.black {
             margin-bottom: $margin-base;
             text-shadow: 0 0 2px darken($blue, 10%);
             font-size: $font-size - 2;
+            opacity: .7;
             &:last-child {
                 margin-bottom: $margin-base * 3;
+            }
+            @media screen and (max-height: 360px) {
+                margin-bottom: $margin-base - 4;
+            }
+            &.is-active {
+                opacity: 1;
             }
             &.is-active::before {
                 content: " ";
@@ -359,6 +365,7 @@ a.black {
                 margin-top: 6px;
                 position: absolute;
                 left: 6px;
+                opacity: 1;
             }
         }
     }

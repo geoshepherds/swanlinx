@@ -27,6 +27,7 @@ $(document).ready(function() {
         $(this).addClass('is-active');
         
         updateData($(this).attr('id'));
+//        updateLegendTitle($(this).attr('id'));
         
     });
     
@@ -37,137 +38,183 @@ $(document).ready(function() {
     // GET COLOR FUNCTION 
     
     var bgColor = 'rgb(193,193,193)',
+        noData = 'rgb(215,215,215)',
         white = 'rgb(250,250,250)',
         bgOpacity = .4,
-        whiteOpacity = .4
+        whiteOpacity = .4,
+        colorScale,
+        legendGroup,
+        legendTitle,
+        legendLabel,
+        legendSpacing = 4,
+        legendRectSize = 18;
+    
+    
+    var h,
+        legH,
+        windH,
+        vertTop = 0,
+        vert = 0,
+        horz;
     
     function getColor(data, layer) {
         
-        updateLegend(data, layer);
-        
-        if(layer === 'bmi_male') {
+        if(data != null) {
             
-            return  data === null ? bgColor :
-                    data <= 14 ? colorbrewer.RdYlGn[3][1] :
-                    data > 14 && data <= 19 ? colorbrewer.RdYlGn[4][3] :
-                    data > 19 && data <= 22 ? colorbrewer.RdYlGn[4][1] :
-                    data > 22 ? colorbrewer.RdYlGn[4][0] :
-                    bgColor
-            
-        } else if(layer === 'bmi_female') {
-            
-            return  data === null ? bgColor :
-                    data <= 14 ? colorbrewer.RdYlGn[3][1] :
-                    data > 14 && data <= 20 ? colorbrewer.RdYlGn[4][3] :
-                    data > 20 && data <= 24 ? colorbrewer.RdYlGn[4][1] :
-                    data > 24 ? colorbrewer.RdYlGn[4][0] :
-                    bgColor
-            
-        } else if(layer === 'grip_male' || layer === 'grip_female') {
-            
-            if(data != null) {
-                
-                var colorScale = d3.scale.threshold()
-                    .domain([3, 9, 15, 21])
-                    .range(colorbrewer.RdYlGn[5]);
-            
-                return colorScale(data);
-                
-            } else {
-                
-                return bgColor;
-                
-            }
-                      
-            
-        } else if(layer === 'fitness' || layer === 'health') {
-            
-            if(data != null) {
-                
-                var colorScale = d3.scale.threshold()
-                    .domain([1, 2, 3, 4])
-                    .range(colorbrewer.RdYlGn[5]);
-            
-                return colorScale(data); 
-                
-            } else {
-                
-                return bgColor;
-                
-            }
-                     
-            
-        } else if(layer === 'bleep_male') {
-            
-            if(data != null) {
-                
-                var colorScale = d3.scale.threshold()
-                    .domain([12, 32, 52])
-                    .range(colorbrewer.RdYlGn[4]);
-            
-                return colorScale(data);  
-                
-            } else {
-                
-                return bgColor;
-                
-            }
-            
-                    
-            
-        } else if(layer === 'bleep_female') {
-            
-            if(data != null) {
-                
-                var colorScale = d3.scale.threshold()
-                    .domain([7, 24, 44])
-                    .range(colorbrewer.RdYlGn[4]);
+            if(layer === 'bmi_male') {
+               
+                legendLabel = ['Underweight', 'Healthy Weight', 'Overweight', 'Obese'];
+                colorScale = d3.scale.threshold()
+                    .domain([0, 14, 19, 22])
+                    .range([
+                        noData,
+                        colorbrewer.RdYlGn[3][1],
+                        colorbrewer.RdYlGn[4][3],
+                        colorbrewer.RdYlGn[4][1],
+                        colorbrewer.RdYlGn[4][0]
+                    ]);
 
+                updateLegend(); // call update legend function
+                return colorScale(data);
+
+            } else if(layer === 'bmi_female') {
+                
+                legendLabel = ['Underweight', 'Healthy Weight', 'Overweight', 'Obese'];
+                colorScale = d3.scale.threshold()
+                    .domain([0, 14, 20, 24])
+                    .range([
+                        noData,
+                        colorbrewer.RdYlGn[3][1],
+                        colorbrewer.RdYlGn[4][3],
+                        colorbrewer.RdYlGn[4][1],
+                        colorbrewer.RdYlGn[4][0]
+                    ]);
+
+                updateLegend(); // call update legend function
+                return colorScale(data);
+
+            } else if(layer === 'grip_male' || layer === 'grip_female') {
+
+                legendLabel = ['< 3', '3 - 9', '9 - 15', '15 - 21', '> 21'];
+                colorScale = d3.scale.threshold()
+                    .domain([0, 3, 9, 15, 21])
+                    .range([
+                        noData,
+                        colorbrewer.RdYlGn[5][0],
+                        colorbrewer.RdYlGn[5][1],
+                        colorbrewer.RdYlGn[5][2],
+                        colorbrewer.RdYlGn[5][3],
+                        colorbrewer.RdYlGn[5][4]
+                    ]);
+
+                updateLegend(); // call update legend function
+                return colorScale(data);
+
+
+            } else if(layer === 'fitness' || layer === 'health') {
+
+                legendLabel = ['Very Unhappy', 'Unhappy', 'Okay', 'Happy', 'Very Happy'];
+                colorScale = d3.scale.threshold()
+                    .domain([0, 1.5, 2.5, 3.5, 4.5])
+                    .range([
+                        noData,
+                        colorbrewer.RdYlGn[5][0],
+                        colorbrewer.RdYlGn[5][1],
+                        colorbrewer.RdYlGn[5][2],
+                        colorbrewer.RdYlGn[5][3],
+                        colorbrewer.RdYlGn[5][4]
+                    ]);
+
+                updateLegend(); // call update legend function
                 return colorScale(data); 
+
+
+            } else if(layer === 'bleep_male') {
                 
-            } else {
+                legendLabel = ['< 12', '12 - 32', '32 - 52', '> 52'];
+                colorScale = d3.scale.threshold()
+                    .domain([0, 12, 32, 52])
+                    .range([
+                        noData,
+                        colorbrewer.RdYlGn[4][0],
+                        colorbrewer.RdYlGn[4][1],
+                        colorbrewer.RdYlGn[4][2],
+                        colorbrewer.RdYlGn[4][3],
+                    ]);
+
+                updateLegend(); // call update legend function    
+                return colorScale(data);  
+
+            } else if(layer === 'bleep_female') {
+
+                legendLabel = ['< 7', '7 - 24', '24 - 44', '> 44'];
+                colorScale = d3.scale.threshold()
+                    .domain([0, 7, 24, 44])
+                    .range([
+                        noData,
+                        colorbrewer.RdYlGn[4][0],
+                        colorbrewer.RdYlGn[4][1],
+                        colorbrewer.RdYlGn[4][2],
+                        colorbrewer.RdYlGn[4][3],
+                    ]);
+
+                updateLegend(); // call update legend function
+                return colorScale(data);                      
+
+            } else if(layer === 'sleep_time') {
                 
-                return bgColor;
-                
-            }
-                     
-            
-        } else if(layer === 'sleep_time') {
-            
-            return  data === null ? bgColor :
-                    data <= 5.5 ? colorbrewer.RdYlGn[4][0] :
-                    data > 5.5 && data <= 6.5 ? colorbrewer.RdYlGn[4][1] :
-                    data > 6.5 && data <= 7.5 ? colorbrewer.RdYlGn[4][2] :
-                    data > 7.5 && data <= 10.5 ? colorbrewer.RdYlGn[4][3] :
-                    data > 10.5 && data <= 12 ? colorbrewer.RdYlGn[4][2] :
-                    data > 12 && data <= 13 ? colorbrewer.RdYlGn[4][1] :
-                    data > 13 && data <= 14.5 ? colorbrewer.RdYlGn[4][0] :
-                    bgColor
-            
-        } else if(layer === 'fruit_avg') {
-            
-            if(data != null) {
-                
-               var colorScale = d3.scale.threshold()
-                    .domain([1, 3, 6])
-                    .range(colorbrewer.RdYlGn[4]);
-            
+                legendLabel = ['< 5.5', '5.5 - 6.5', '6.5 - 7.5', '7.5 - 10.5', '10.5 - 12', '12 - 13', '13 - 14.5'];
+                colorScale = d3.scale.threshold()
+                    .domain([0, 5.5, 6.5, 7.5, 10.5, 12, 13])
+                    .range([
+                        noData,
+                        colorbrewer.RdYlGn[4][0],
+                        colorbrewer.RdYlGn[4][1],
+                        colorbrewer.RdYlGn[4][2],
+                        colorbrewer.RdYlGn[4][3],
+                        colorbrewer.RdYlGn[4][2],
+                        colorbrewer.RdYlGn[4][1], 
+                        colorbrewer.RdYlGn[4][0]
+                    ]);
+
+                updateLegend(); // call update legend function
                 return colorScale(data); 
-                
-            } else {
-                
-                return bgColor;
-                
-            }
+
+            } else if(layer === 'fruit_avg') {
+
+                legendLabel = ['< 1', '1-3', '3-6', '> 6'];
+                colorScale = d3.scale.threshold()
+                    .domain([0, 1, 3, 6])
+                    .range([
+                        noData,
+                        colorbrewer.RdYlGn[4][0],
+                        colorbrewer.RdYlGn[4][1],
+                        colorbrewer.RdYlGn[4][2],
+                        colorbrewer.RdYlGn[4][3],
+                    ]);
+
+                updateLegend(); // call update legend function
+                return colorScale(data); 
+
+            } else if(layer === 'fizzy_drinks') {            
+
+                legendLabel = ['Yes', 'No'];
+                colorScale = d3.scale.ordinal()
+                    .domain([1, 2])
+                    .range([colorbrewer.RdYlGn[4][0], colorbrewer.RdYlGn[4][3]]);
+
+                updateLegend(); // call update legend function
+                return colorScale(data);        
+
+            } 
             
-        } else if(layer === 'fizzy_drinks') {
+        } else {
             
-            return  data === null ? bgColor :
-                    data < 1.5 ? colorbrewer.RdYlGn[4][0] :
-                    data >= 1.5 ? colorbrewer.RdYlGn[4][3] :
-                    bgColor            
+            return noData;
             
-        } 
+        }
+        
+        
         
     } //end getColor function
     
@@ -304,8 +351,8 @@ $(document).ready(function() {
                 class: 'place',
                 r: function(d) {
                     var place = d.properties.place;
-                    return  place === 'city' ? 6 :
-                            place === 'town' ? 3 :
+                    return  place === 'city' ? 4 :
+                            place === 'town' ? 2 :
                             0;    
                 },
                 transform: function(d) {
@@ -316,7 +363,8 @@ $(document).ready(function() {
                 }
             })
             .style({
-                fill: '#373a3c'
+                fill: '#373a3c',
+                opacity: .8
             });
         
         placeGroup.selectAll('.place-label')
@@ -331,21 +379,33 @@ $(document).ready(function() {
             })
             .text(function(d) {
                 return d.properties.name;
+            })
+            .style({
+                fill: '#373a3c',
+                opacity: .8,
+                'font-size': function(d) {
+                    var place = d.properties.place;
+                    
+                    if(width > 768) {
+                        return  place === 'city' ? '14px' :
+                            place === 'town' ? '12px' :
+                            0; 
+                    } else {
+                        return  place === 'city' ? '12px' :
+                            place === 'town' ? '10px' :
+                            0; 
+                    }
+                    
+                }
             });
         
         placeGroup.selectAll(".place-label")
             .attr('x', function(d) { 
-                return d.geometry.coordinates[0] > -3.9 ? 9 : -9; 
+                return d.geometry.coordinates[0] > -3.9 ? 6 : -6; 
             })
             .style('text-anchor', function(d) { 
                 return d.geometry.coordinates[0] > -3.9 ? 'start' : 'end'; 
             });
-        
-        
-        // MAP LEGEND/ANNOTATION 
-    
-        
-       
         
     } // end makeMap function
     
@@ -362,50 +422,84 @@ $(document).ready(function() {
             });
         
     } // end updateData function
+    
+    
+    // MAP LEGEND/ANNOTATION
    
-    function updateLegend(data, layer) {
-            
-            var legendGroup = g.append('g')
-                .attr({
-                    class: 'legend'
-                });
-//            legendGroup.selectAll('rect.legend')
-//                .data(data)
-//                .enter().append('rect')
-//                .attr({
-//                    class: 'legend',
-//                    x: 24,
-//                    y: function(d, i){ 
-//                        return i *  20;
-//                    },
-//                    width: 10,
-//                    height: 10
-//                })
-//                .style({
-//                   fill: function(d) {
-//                       return getColor(d.properties.bmi_male, 'bmi_male');
-//                   } 
-//                });
-            
-            
-    }
+    function updateLegend() {
+    
+        
+        d3.selectAll('g.legend').remove();
+        
+        legendGroup = g.selectAll('g.legend')
+            .data(colorScale.domain())
+            .enter().append('g')
+            .attr({
+                class: 'legend',
+                transform: function(d, i) {
+                    
+                    if (width > 768) {
+                        windH = (height - 24) - legH; 
+                        horz = 24;
+                    } else {
+                        windH = (height) - legH;
+                        horz = 0;
+                    }
+                    
+                    h = legendRectSize,
+                    legH = colorScale.domain().length * h,
+                    vertTop = (0 * h) + windH,    
+                    vert = (i * h) + windH;    
+                    
+                    return 'translate(' + horz + ',' + vert + ')';
+                }
+            });
+        
+        legendGroup.append('rect')                                     
+            .attr({
+                width: legendRectSize,
+                height: legendRectSize
+            })                         
+            .style({
+                fill: colorScale,
+                stroke: colorScale
+            });                                
+
+        legendGroup.append('text')                                     
+            .attr({
+                x: legendRectSize + legendSpacing,
+                y: legendRectSize - legendSpacing
+            })
+            .text(function(d, i) { 
+                return legendLabel[i]; 
+            })
+            .style({
+                fontSize: '11px'
+            }); 
+        
+        
+        
+    } // end updateLegend function
+    
     
     
     // RESIZE FUNCTION
     
     $(window).resize(function() {
-        var w = $('#map').width(),
-            h = $('#map').height();
+        var ww = $('#map').width(),
+            wh = $('#map').height();
         
-        svg.attr('width', w);
-        svg.attr('height', h);
+        height = wh;
         
-        projection.translate([w / 2, h / 2])
+        svg.attr('width', ww);
+        svg.attr('height', wh);
         
-        if(w < 768) {
-            projection.scale(w * 85);
+        projection.translate([ww / 2, wh / 2])
+        
+        if(ww < 768) {
+            projection.scale(ww * 85);
         } else {
-            projection.scale(w * 65);
+            projection.scale(ww * 65);
         }
         
         
@@ -426,7 +520,45 @@ $(document).ready(function() {
                 transform: function(d) { 
                     return "translate(" + projection(d.geometry.coordinates) + ")"; 
                 }
+            })
+            .style({
+                'font-size': function(d) {
+                    var place = d.properties.place;
+                    
+                    if(width > 768) {
+                        return  place === 'city' ? '14px' :
+                            place === 'town' ? '12px' :
+                            0; 
+                    } else {
+                        return  place === 'city' ? '12px' :
+                            place === 'town' ? '10px' :
+                            0; 
+                    }  
+                }
             });
+        d3.selectAll('g.legend')
+            .attr({
+                transform: function(d, i) {
+                    
+                    if (ww > 768) {
+                        windH = (height - 24) - legH; 
+                        horz = 24;
+                    } else {
+                        windH = (height) - legH;
+                        horz = 0;
+                    }
+                    
+                    h = legendRectSize,
+                    legH = colorScale.domain().length * h,
+                    vertTop = (0 * h) + windH,    
+                    vert = (i * h) + windH;  
+                    
+                    return 'translate(' + horz + ',' + vert + ')';
+                }
+            });
+        d3.select('.legTitle').attr({
+            transform: 'translate(' + (horz - 24) + ',' + (vertTop - 36) + ')'
+        });
         
     }); // end resize function
     
