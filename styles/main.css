@@ -99,7 +99,7 @@ a.black {
 
 @media all and (orientation: portrait) {
   .user-rotate {
-    background-image: url(media/screen-rotation-button.svg);
+    background-image: url(../media/screen-rotation-button.svg);
     background-position: center;
     background-size: 45px;
     background-repeat: no-repeat;
@@ -199,11 +199,11 @@ a.black {
       height: 100px;
       position: absolute; }
     .overlay-helper .content .ui-arrow-right {
-      background-image: url(media/arc-arrow-right.svg);
+      background-image: url(../media/arc-arrow-right.svg);
       right: 80px;
       top: 20px; }
     .overlay-helper .content .ui-arrow-left {
-      background-image: url(media/arc-arrow-left.svg);
+      background-image: url(../media/arc-arrow-left.svg);
       left: 80px;
       top: 110px; }
   .overlay-helper .user-confirm {
@@ -227,7 +227,7 @@ a.black {
       display: inline-block;
       width: 35px;
       height: 15px;
-      background-image: url(media/right-arrow-forward.svg);
+      background-image: url(../media/right-arrow-forward.svg);
       background-repeat: no-repeat;
       background-size: 25px 15px;
       background-position: bottom;
@@ -260,7 +260,7 @@ a.black {
       transition: opacity .3s; }
     .map-title .info-panel-btn .info-btn {
       background-color: #75bad3;
-      background-image: url(media/round.svg);
+      background-image: url(../media/round.svg);
       background-size: 50%;
       background-position: center;
       background-repeat: no-repeat;
@@ -310,7 +310,7 @@ a.black {
         transform: translateX(-50%);
         width: 50px;
         height: 50px;
-        background-image: url(media/close-button-black.svg);
+        background-image: url(../media/close-button-black.svg);
         background-repeat: no-repeat;
         background-size: 25px;
         background-position: center;
@@ -337,7 +337,7 @@ a.black {
   transition: right 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
   .layer-panel-btn .layer-btn {
     background-color: #75bad3;
-    background-image: url(media/go-back-left-arrow.svg);
+    background-image: url(../media/go-back-left-arrow.svg);
     background-size: 25%;
     background-position: 50% 70%;
     background-repeat: no-repeat;
@@ -354,7 +354,7 @@ a.black {
     right: 33.33%;
     transition: right 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
     .layer-panel-btn.is-active .layer-btn {
-      background-image: url(media/close-button-white.svg); }
+      background-image: url(../media/close-button-white.svg); }
 
 .layer-panel-container {
   display: block;
