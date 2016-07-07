@@ -414,6 +414,9 @@ $(document).ready(function() {
                 return d.geometry.coordinates[0] > -3.9 ? 'start' : 'end'; 
             });
         
+        
+        $('.pre-loader').addClass('hidden');
+        
     } // end makeMap function
     
     function updateData(layerID) {
