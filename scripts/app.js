@@ -272,8 +272,6 @@ $(document).ready(function() {
     
     function makeMap(error, hexTopo, regTopo, data, places) {
         
-        if (error) throw error;
-        
         var hexGrid = topojson.feature(hexTopo, hexTopo.objects.hex_grid);
         var regions = topojson.feature(regTopo, regTopo.objects.ua_regions);
         
