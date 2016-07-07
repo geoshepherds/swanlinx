@@ -370,7 +370,8 @@ a.black {
     height: 100%;
     padding: 18px;
     color: #fff;
-    opacity: 0; }
+    opacity: 0;
+    overflow-y: scroll; }
     .layer-panel-container .layer-panel-content .layer-title, .layer-panel-container .layer-panel-content .geoshepherds {
       display: none; }
     .layer-panel-container .layer-panel-content .layer-instructions {

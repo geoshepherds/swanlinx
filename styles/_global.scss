@@ -390,6 +390,7 @@ a.black {
         padding: $margin-base * 1.5;
         color: $white;
         opacity: 0;
+        overflow-y: scroll;
         & .layer-title, & .geoshepherds {
             display: none;
         }
