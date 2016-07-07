@@ -150,9 +150,9 @@ a.black {
     display: none; }
   .pre-loader div {
     position: absolute;
-    left: 50%;
+    left: 40%;
     top: 50%;
-    transform: translate(-50%); }
+    transform: translate(-40% -50%); }
     .pre-loader div:first-child {
       animation: blink ease-in 1.5s infinite; }
     .pre-loader div:nth-child(2) {
@@ -374,7 +374,7 @@ a.black {
     .layer-panel-container .layer-panel-content .layer-title, .layer-panel-container .layer-panel-content .geoshepherds {
       display: none; }
     .layer-panel-container .layer-panel-content .layer-instructions {
-      color: #e6e6e6;
+      color: #fff;
       margin-bottom: 12px;
       font-size: 12px; }
     .layer-panel-container .layer-panel-content p {

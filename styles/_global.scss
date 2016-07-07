@@ -129,9 +129,9 @@ a.black {
     }
     & div {
         position: absolute;
-        left: 50%;
+        left: 40%;
         top: 50%;
-        transform: translate(-50%);
+        transform: translate(-40% -50%);
         &:first-child {
              animation: blink ease-in 1.5s infinite;
         }
@@ -394,7 +394,7 @@ a.black {
             display: none;
         }
         & .layer-instructions {
-            color: darken($white, 10%);
+            color: $white;
             margin-bottom: $margin-base;
             font-size: $font-size - 2;
         }
