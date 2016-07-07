@@ -261,10 +261,10 @@ $(document).ready(function() {
         });
     
     var q = d3.queue()
-        .defer(d3.json, '/data/hex_grid.json')
-        .defer(d3.json, '/data/ua_regions.json')
-        .defer(d3.json, '/data/swanlinx-data.geojson')
-        .defer(d3.json, '/data/pop_places.geojson')
+        .defer(d3.json, 'data/hex_grid.json')
+        .defer(d3.json, 'data/ua_regions.json')
+        .defer(d3.json, 'data/swanlinx-data.geojson')
+        .defer(d3.json, 'data/pop_places.geojson')
         .await(makeMap);
     
     
