@@ -27,7 +27,6 @@ $(document).ready(function() {
         $(this).addClass('is-active');
         
         updateData($(this).attr('id'));
-//        updateLegendTitle($(this).attr('id'));
         
     });
     
@@ -35,7 +34,11 @@ $(document).ready(function() {
         $(this).parent().addClass('hidden');
     });
     
-    // GET COLOR FUNCTION 
+    
+    
+    
+    // GLOBAL VARIABLES //
+    
     
     var bgColor = 'rgb(193,193,193)',
         noData = 'rgb(215,215,215)',
@@ -56,6 +59,10 @@ $(document).ready(function() {
         vertTop = 0,
         vert = 0,
         horz;
+    
+    
+    // GET COLOR FUNCTION //
+    
     
     function getColor(data, layer) {
         
@@ -95,16 +102,16 @@ $(document).ready(function() {
 
             } else if(layer === 'grip_male' || layer === 'grip_female') {
 
-                legendLabel = ['< 3', '3 - 9', '9 - 15', '15 - 21', '> 21'];
+                legendLabel = ['< 7', '7 - 15', '15 - 21', '21 - 31', '> 31'];
                 colorScale = d3.scale.threshold()
-                    .domain([0, 3, 9, 15, 21])
+                    .domain([0, 7, 15, 21, 31])
                     .range([
                         noData,
                         colorbrewer.RdYlGn[5][0],
                         colorbrewer.RdYlGn[5][1],
-                        colorbrewer.RdYlGn[5][2],
                         colorbrewer.RdYlGn[5][3],
-                        colorbrewer.RdYlGn[5][4]
+                        colorbrewer.RdYlGn[5][4],
+                        colorbrewer.RdYlGn[5][5]
                     ]);
 
                 updateLegend(); // call update legend function
@@ -122,7 +129,7 @@ $(document).ready(function() {
                         colorbrewer.RdYlGn[5][1],
                         colorbrewer.RdYlGn[5][2],
                         colorbrewer.RdYlGn[5][3],
-                        colorbrewer.RdYlGn[5][4]
+                        colorbrewer.RdYlGn[5][5]
                     ]);
 
                 updateLegend(); // call update legend function
@@ -131,15 +138,16 @@ $(document).ready(function() {
 
             } else if(layer === 'bleep_male') {
                 
-                legendLabel = ['< 12', '12 - 32', '32 - 52', '> 52'];
+                legendLabel = ['< 13', '13 - 32', '32 - 52', '52 - 72', '> 72'];
                 colorScale = d3.scale.threshold()
-                    .domain([0, 12, 32, 52])
+                    .domain([0, 13, 32, 52, 72])
                     .range([
                         noData,
-                        colorbrewer.RdYlGn[4][0],
-                        colorbrewer.RdYlGn[4][1],
-                        colorbrewer.RdYlGn[4][2],
-                        colorbrewer.RdYlGn[4][3],
+                        colorbrewer.RdYlGn[5][0],
+                        colorbrewer.RdYlGn[5][1],
+                        colorbrewer.RdYlGn[5][2],
+                        colorbrewer.RdYlGn[5][3],
+                        colorbrewer.RdYlGn[5][5]
                     ]);
 
                 updateLegend(); // call update legend function    
@@ -147,15 +155,16 @@ $(document).ready(function() {
 
             } else if(layer === 'bleep_female') {
 
-                legendLabel = ['< 7', '7 - 24', '24 - 44', '> 44'];
+                legendLabel = ['< 7', '7 - 24', '24 - 44', '44 - 64', '> 64'];
                 colorScale = d3.scale.threshold()
-                    .domain([0, 7, 24, 44])
+                    .domain([0, 7, 24, 44, 64])
                     .range([
                         noData,
-                        colorbrewer.RdYlGn[4][0],
-                        colorbrewer.RdYlGn[4][1],
-                        colorbrewer.RdYlGn[4][2],
-                        colorbrewer.RdYlGn[4][3],
+                        colorbrewer.RdYlGn[5][0],
+                        colorbrewer.RdYlGn[5][1],
+                        colorbrewer.RdYlGn[5][2],
+                        colorbrewer.RdYlGn[5][3],
+                        colorbrewer.RdYlGn[5][5],
                     ]);
 
                 updateLegend(); // call update legend function
@@ -212,10 +221,8 @@ $(document).ready(function() {
             
             return noData;
             
-        }
-        
-        
-        
+        } // end null data check
+    
     } //end getColor function
     
     // D3 MAP AND VIZ
@@ -260,6 +267,8 @@ $(document).ready(function() {
         .defer(d3.json, '/data/pop_places.geojson')
         .await(makeMap);
     
+    
+    // BEGIN MAKEMAP FUNCTION //
     
     function makeMap(error, hexTopo, regTopo, data, places) {
         
@@ -314,7 +323,7 @@ $(document).ready(function() {
         
         
     
-        // MAP SWANLINX DATA
+        // MAP SWANLINX DATA //
         
         var dataGroup = g.append('g')
             .attr({
@@ -337,7 +346,7 @@ $(document).ready(function() {
                 strokeOpacity: whiteOpacity
             });
         
-        // PLACE LABELS
+        // PLACE LABELS //
         
         var placeGroup = g.append('g')
             .attr({
@@ -424,7 +433,7 @@ $(document).ready(function() {
     } // end updateData function
     
     
-    // MAP LEGEND/ANNOTATION
+    // MAP LEGEND/ANNOTATION //
    
     function updateLegend() {
     
@@ -483,7 +492,7 @@ $(document).ready(function() {
     
     
     
-    // RESIZE FUNCTION
+    // RESIZE FUNCTION //
     
     $(window).resize(function() {
         var ww = $('#map').width(),

@@ -1,17 +1,14 @@
-
-SELECT 
-	COALESCE(points.fruit_veg, 0) AS fuit_veg,
-	COALESCE(points.drink_ind, 0) AS drink_ind,
-	COALESCE(points.sleep_time, 0) AS sleep_time,
-	COALESCE(points.fit_ind, 0) AS fit_ind,
-	COALESCE(points.health_ind, 0) AS health_ind,
-	COALESCE(points.bleep_m, 0) AS bleep_m,
-	COALESCE(points.bleep_f, 0) AS bleep_f,
-	COALESCE(points.bmi_m, 0) AS bmi_m,
-	COALESCE(points.bmi_f, 0) AS bmi_f,
-	COALESCE(points.grip_m, 0) AS grip_m,
-	COALESCE(points.grip_f, 0) AS grip_f,
-	points.geom AS geom
-FROM points
-ORDER BY points.bmi_m ASC;
+﻿UPDATE points 
+SET 	bmi_m = COALESCE(NULLIF(points.bmi_m, 0)),
+	bmi_f = COALESCE(NULLIF(points.bmi_f, 0)),
+	bleep_m = COALESCE(NULLIF(points.bleep_m, 0)),
+	bleep_f = COALESCE(NULLIF(points.bleep_f, 0)),
+	grip_m = COALESCE(NULLIF(points.grip_m, 0)),
+	grip_f = COALESCE(NULLIF(points.grip_f, 0)),
+	sleep_time = COALESCE(NULLIF(points.sleep_time, 0)),
+	fit_ind = COALESCE(NULLIF(points.fit_ind, 0)),
+	health_ind = COALESCE(NULLIF(points.health_ind, 0)),
+	drink_ind = COALESCE(NULLIF(points.drink_ind, 0))
+ 
+	
  
