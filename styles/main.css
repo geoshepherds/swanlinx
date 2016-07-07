@@ -41,14 +41,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-@-webkit-keyframes animate-margin {
-  0% {
-    margin-left: 0px; }
-  50% {
-    margin-left: 12px; }
-  100% {
-    margin-left: 0px; } }
-
 @keyframes animate-margin {
   0% {
     margin-left: 0px; }
@@ -66,7 +58,7 @@ body {
 
 .app-wrapper {
   position: relative;
-  height: 100vh;
+  height: 101vh;
   width: 100vw;
   overflow-y: hidden; }
 
@@ -123,7 +115,6 @@ a.black {
       position: absolute;
       top: 50%;
       left: 50%;
-      -webkit-transform: translate(-50%);
       transform: translate(-50%);
       margin-top: 48px;
       text-align: center;
@@ -133,38 +124,17 @@ a.black {
   .user-rotate {
     display: none; } }
 /* Styles for Landscape screen */
-@-webkit-keyframes blink {
-  0% {
-    -webkit-transform: scale(0.4);
-    transform: scale(0.4);
-    opacity: 0.1; }
-  40% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    opacity: 1; }
-  90% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    opacity: 1; }
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    opacity: 0.1; } }
 @keyframes blink {
   0% {
-    -webkit-transform: scale(0.4);
     transform: scale(0.4);
     opacity: 0.1; }
   40% {
-    -webkit-transform: scale(1);
     transform: scale(1);
     opacity: 1; }
   90% {
-    -webkit-transform: scale(1);
     transform: scale(1);
     opacity: 1; }
   100% {
-    -webkit-transform: scale(1);
     transform: scale(1);
     opacity: 0.1; } }
 .pre-loader {
@@ -182,30 +152,22 @@ a.black {
     position: absolute;
     left: 40%;
     top: 50%;
-    -webkit-transform: translate(-40% -50%);
     transform: translate(-40% -50%); }
     .pre-loader div:first-child {
-      -webkit-animation: blink ease-in 1.5s infinite;
       animation: blink ease-in 1.5s infinite; }
     .pre-loader div:nth-child(2) {
-      -webkit-animation: blink ease-in 1.5s infinite 0.1s;
       animation: blink ease-in 1.5s infinite 0.1s; }
     .pre-loader div:nth-child(3) {
-      -webkit-animation: blink ease-in 1.5s infinite 0.2s;
       animation: blink ease-in 1.5s infinite 0.2s; }
     .pre-loader div:nth-child(4) {
-      -webkit-animation: blink ease-in 1.5s infinite 0.3s;
       animation: blink ease-in 1.5s infinite 0.3s; }
     .pre-loader div:nth-child(5) {
-      -webkit-animation: blink ease-in 1.5s infinite 0.4s;
       animation: blink ease-in 1.5s infinite 0.4s; }
     .pre-loader div:nth-child(6) {
-      -webkit-animation: blink ease-in 1.5s infinite 0.5s;
       animation: blink ease-in 1.5s infinite 0.5s; }
 
 .overlay-helper {
   opacity: 1;
-  -webkit-transition: opacity .6s ease-in-out;
   transition: opacity .6s ease-in-out;
   position: absolute;
   top: 0;
@@ -269,13 +231,9 @@ a.black {
       background-repeat: no-repeat;
       background-size: 25px 15px;
       background-position: bottom;
-      -webkit-animation-name: animate-margin;
       animation-name: animate-margin;
-      -webkit-animation-duration: .8s;
       animation-duration: .8s;
-      -webkit-animation-iteration-count: infinite;
       animation-iteration-count: infinite;
-      -webkit-animation-timing-function: ease-in-out;
       animation-timing-function: ease-in-out; }
 
 #map {
@@ -299,7 +257,6 @@ a.black {
     cursor: pointer; }
     .map-title .info-panel-btn.hidden {
       opacity: 0;
-      -webkit-transition: opacity .3s;
       transition: opacity .3s; }
     .map-title .info-panel-btn .info-btn {
       background-color: #75bad3;
@@ -315,7 +272,6 @@ a.black {
   position: relative;
   height: 100%;
   width: 0%;
-  -webkit-transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1);
   transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
   .info-panel-container .info-panel-content {
     opacity: 0; }
@@ -326,7 +282,6 @@ a.black {
   .info-panel-container.is-active {
     width: 65%;
     z-index: 997;
-    -webkit-transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1);
     transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
     @media screen and (min-width: 768px) {
       .info-panel-container.is-active {
@@ -345,16 +300,13 @@ a.black {
         padding-right: 24px;
         font-size: 12px;
         opacity: 1;
-        -webkit-transition: opacity 0.3s cubic-bezier(0.74, 0, 0.26, 1);
         transition: opacity 0.3s cubic-bezier(0.74, 0, 0.26, 1);
-        -webkit-transition-delay: .3s;
         transition-delay: .3s; }
       .info-panel-container.is-active .info-panel-content .close-btn {
         position: absolute;
         bottom: 0;
         margin-bottom: 12px;
         left: 50%;
-        -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
         width: 50px;
         height: 50px;
@@ -363,9 +315,7 @@ a.black {
         background-size: 25px;
         background-position: center;
         opacity: 1;
-        -webkit-transition: opacity 0.3s cubic-bezier(0.74, 0, 0.26, 1);
         transition: opacity 0.3s cubic-bezier(0.74, 0, 0.26, 1);
-        -webkit-transition-delay: .6s;
         transition-delay: .6s;
         cursor: pointer; }
         .info-panel-container.is-active .info-panel-content .close-btn::after {
@@ -384,7 +334,6 @@ a.black {
   color: #fff;
   cursor: pointer;
   z-index: 998;
-  -webkit-transition: right 0.3s cubic-bezier(0.74, 0, 0.26, 1);
   transition: right 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
   .layer-panel-btn .layer-btn {
     background-color: #75bad3;
@@ -403,7 +352,6 @@ a.black {
     width: 65px; }
   .layer-panel-btn.is-active {
     right: 33.33%;
-    -webkit-transition: right 0.3s cubic-bezier(0.74, 0, 0.26, 1);
     transition: right 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
     .layer-panel-btn.is-active .layer-btn {
       background-image: url(../media/close-button-white.svg); }
@@ -416,7 +364,6 @@ a.black {
   top: 0;
   right: 0px;
   background-color: #75bad3;
-  -webkit-transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1);
   transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
   .layer-panel-container .layer-panel-content {
     position: relative;
@@ -460,13 +407,10 @@ a.black {
   .layer-panel-container.is-active {
     width: 33.33%;
     z-index: 998;
-    -webkit-transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1);
     transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
     .layer-panel-container.is-active .layer-panel-content {
       opacity: 1;
-      -webkit-transition: opacity 0.4ss cubic-bezier(0.74, 0, 0.26, 1);
       transition: opacity 0.4ss cubic-bezier(0.74, 0, 0.26, 1);
-      -webkit-transition-delay: .3s;
       transition-delay: .3s; }
 
 @media screen and (min-width: 768px) {
@@ -507,3 +451,5 @@ a.black {
     width: 25%; }
     .layer-panel-container .layer-panel-content .layer-li {
       font-size: 15.4px; } }
+
+/*# sourceMappingURL=main.css.map */
