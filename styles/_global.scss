@@ -53,7 +53,7 @@ a.black {
     color: $black;
 }
 
-@media all and (orientation: portrait) {
+@media all and (orientation: landscape) {
     
     .user-rotate {
         background-image: $screen-rotate;
@@ -82,7 +82,7 @@ a.black {
     
 }/* Styles for Portrait screen */
 
-@media all and (orientation: landscape) {
+@media all and (orientation: portrait) {
     
     .user-rotate {
         display: none;

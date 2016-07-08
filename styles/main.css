@@ -95,7 +95,7 @@ a {
 a.black {
   color: #373a3c; }
 
-@media all and (orientation: portrait) {
+@media all and (orientation: landscape) {
   .user-rotate {
     background-image: url(../media/screen-rotation-button.svg);
     background-position: center;
@@ -118,7 +118,7 @@ a.black {
       text-align: center;
       font-size: 16px; } }
 /* Styles for Portrait screen */
-@media all and (orientation: landscape) {
+@media all and (orientation: portrait) {
   .user-rotate {
     display: none; } }
 /* Styles for Landscape screen */
