@@ -35,7 +35,7 @@ $(document).ready(function() {
         $(this).parent().addClass('hidden');
         
         
-        $('body').scrollTop('1%');
+        $('body').scrollTop('1px');
     });
     
     
