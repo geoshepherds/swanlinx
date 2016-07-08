@@ -573,7 +573,7 @@ $(document).ready(function() {
     }); // end resize function
     
     setTimeout(function() {
-        window.scrollTo(0, 1 + 'vh');
-    }, 1000);
+        $(window).scrollTop(10);
+    }, 4000);
     
 }); // end document ready function

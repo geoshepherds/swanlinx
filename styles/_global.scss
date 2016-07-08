@@ -7,6 +7,8 @@ body {
     background: $white;
     text-rendering: optimizeLegibility;
     line-height: 1.2;
+    height: 100%;
+    overflow: auto;
 }
 .app-wrapper {
     position: relative;
