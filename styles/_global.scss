@@ -4,7 +4,6 @@ html {
 }
 body {
     min-height: 100%;
-    overflow-x: hidden;
 }
 
 body {
@@ -243,6 +242,7 @@ a.black {
     top: 0;
     bottom: 0;
     right: 0;
+    overflow-x: hidden;
 }
 
 #map {
