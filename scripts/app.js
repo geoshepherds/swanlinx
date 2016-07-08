@@ -15,6 +15,11 @@ $(document).ready(function() {
         $('.info-panel-container').addClass('is-active');
         
         $('.overlay-helper').addClass('hidden');
+        
+        setTimeout(function() {
+            $(window).scrollTop(10);
+        }, 4000);
+        
     });
     
     $('.close-btn').click(function() {
@@ -571,9 +576,5 @@ $(document).ready(function() {
         });
         
     }); // end resize function
-    
-    setTimeout(function() {
-        $(window).scrollTop(10);
-    }, 4000);
     
 }); // end document ready function

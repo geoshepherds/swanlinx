@@ -1,4 +1,8 @@
 // General Styles //
+html,
+body {
+    height: 100%;
+}
 
 body {
     font-family: 'Abel', sans-serif;
@@ -7,14 +11,7 @@ body {
     background: $white;
     text-rendering: optimizeLegibility;
     line-height: 1.2;
-    height: 100%;
-    overflow: auto;
-}
-.app-wrapper {
-    position: relative;
-    height: 101vh;
-    width: 100vw;
-    overflow-y: hidden;
+    min-height: 100%;
 }
 
 h1 {
@@ -236,10 +233,26 @@ a.black {
     }
 }
 
-#map {
+
+.app-wrapper {
+    position: relative;
     height: 100%;
     width: 100%;
+//    position: absolute;
+//    left: 0;
+//    top: 0;
+//    bottom: 0;
+//    right: 0;
+}
+
+#map {
+//    height: 100%;
+//    width: 100%;
     position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
 
 
@@ -275,14 +288,21 @@ a.black {
 }
 
 .info-panel-container {
-    position: relative;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100%;
-    width: 0%;
+    width: 0;
     @include transition('width', .3);
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
     & .info-panel-content {
         opacity: 0;
         & p {
             opacity: 0;
+            height: 100%;
         }
         & .close-btn {
             opacity: 0;
@@ -292,9 +312,6 @@ a.black {
         width: 65%;
         z-index: 997;
         @include transition('width', .3);
-        @media screen and (min-width: 768px) {
-            width: 35%;
-        }
         & .info-panel-content {
             opacity: 1;
             position: absolute;
@@ -385,14 +402,13 @@ a.black {
     top: 0;
     right: 0px;
     background-color: $blue;
+    overflow-y: scroll;
     @include transition('width', .3);
     & .layer-panel-content {
-        position: relative;
-        height: 100%;
+        position: absolute;
         padding: $margin-base * 1.5;
         color: $white;
         opacity: 0;
-        overflow-y: scroll;
         & .layer-title, & .geoshepherds {
             display: none;
         }

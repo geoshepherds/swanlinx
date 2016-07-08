@@ -48,6 +48,10 @@ table {
     margin-left: 12px; }
   100% {
     margin-left: 0px; } }
+html,
+body {
+  height: 100%; }
+
 body {
   font-family: 'Abel', sans-serif;
   font-weight: 400;
@@ -55,14 +59,7 @@ body {
   background: #fff;
   text-rendering: optimizeLegibility;
   line-height: 1.2;
-  height: 100%;
-  overflow: auto; }
-
-.app-wrapper {
-  position: relative;
-  height: 101vh;
-  width: 100vw;
-  overflow-y: hidden; }
+  min-height: 100%; }
 
 h1 {
   font-size: 21px;
@@ -238,10 +235,17 @@ a.black {
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out; }
 
-#map {
+.app-wrapper {
+  position: relative;
   height: 100%;
-  width: 100%;
-  position: absolute; }
+  width: 100%; }
+
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; }
 
 .map-title {
   position: absolute;
@@ -271,23 +275,27 @@ a.black {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); }
 
 .info-panel-container {
-  position: relative;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
-  width: 0%;
+  width: 0;
   transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
+  @media screen and (min-width: 768px) {
+    .info-panel-container {
+      display: none; } }
   .info-panel-container .info-panel-content {
     opacity: 0; }
     .info-panel-container .info-panel-content p {
-      opacity: 0; }
+      opacity: 0;
+      height: 100%; }
     .info-panel-container .info-panel-content .close-btn {
       opacity: 0; }
   .info-panel-container.is-active {
     width: 65%;
     z-index: 997;
     transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
-    @media screen and (min-width: 768px) {
-      .info-panel-container.is-active {
-        width: 35%; } }
     .info-panel-container.is-active .info-panel-content {
       opacity: 1;
       position: absolute;
@@ -366,14 +374,13 @@ a.black {
   top: 0;
   right: 0px;
   background-color: #75bad3;
+  overflow-y: scroll;
   transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
   .layer-panel-container .layer-panel-content {
-    position: relative;
-    height: 100%;
+    position: absolute;
     padding: 18px;
     color: #fff;
-    opacity: 0;
-    overflow-y: scroll; }
+    opacity: 0; }
     .layer-panel-container .layer-panel-content .layer-title, .layer-panel-container .layer-panel-content .geoshepherds {
       display: none; }
     .layer-panel-container .layer-panel-content .layer-instructions {
