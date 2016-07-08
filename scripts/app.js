@@ -16,10 +16,6 @@ $(document).ready(function() {
         
         $('.overlay-helper').addClass('hidden');
         
-        setTimeout(function() {
-            $(window).scrollTop(10);
-        }, 4000);
-        
     });
     
     $('.close-btn').click(function() {

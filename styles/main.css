@@ -298,8 +298,7 @@ a.black {
     bottom: 0;
     width: 100%; }
     .info-panel-container .info-panel-content p {
-      opacity: 0;
-      height: 100%; }
+      opacity: 0; }
     .info-panel-container .info-panel-content .close-btn {
       opacity: 0; }
   .info-panel-container.is-active {
