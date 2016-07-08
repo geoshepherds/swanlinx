@@ -1,7 +1,10 @@
 // General Styles //
-html,
-body {
+html {
     height: 100%;
+}
+body {
+    min-height: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -11,7 +14,6 @@ body {
     background: $white;
     text-rendering: optimizeLegibility;
     line-height: 1.2;
-    min-height: 100%;
 }
 
 h1 {
@@ -168,6 +170,7 @@ a.black {
     background: rgba($black, 0.8);
     &.hidden {
         opacity: 0;
+        display: none;
     }
     & .content {
         padding: $margin-base / 2;
@@ -235,19 +238,14 @@ a.black {
 
 
 .app-wrapper {
-    position: relative;
-    height: 100%;
-    width: 100%;
-//    position: absolute;
-//    left: 0;
-//    top: 0;
-//    bottom: 0;
-//    right: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
 }
 
 #map {
-//    height: 100%;
-//    width: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -291,15 +289,20 @@ a.black {
     display: block;
     position: absolute;
     top: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
+    left: -65%;
+    bottom: 0;
+    width: 65%;
     @include transition('width', .3);
     @media screen and (min-width: 768px) {
         display: none;
     }
     & .info-panel-content {
         opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
         & p {
             opacity: 0;
             height: 100%;
@@ -309,15 +312,11 @@ a.black {
         }
     }
     &.is-active {
-        width: 65%;
+        left: 0;
         z-index: 997;
         @include transition('width', .3);
         & .info-panel-content {
             opacity: 1;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
             width: 100%;
             background-color: $white;
             & p {
@@ -397,10 +396,10 @@ a.black {
 .layer-panel-container {
     display: block;
     position: absolute;
-    width: 0;
+    width: 33.33%;
     height: 100%;
     top: 0;
-    right: 0px;
+    right: -33.33%;
     background-color: $blue;
     overflow-y: scroll;
     @include transition('width', .3);
@@ -450,9 +449,9 @@ a.black {
         }
     }
     &.is-active {
-        width: 33.33%;
+        right: 0;
         z-index: 998;
-        @include transition('width', .3);
+        @include transition('right', .3);
         & .layer-panel-content {
             opacity: 1;
             @include transition('opacity', .4s);

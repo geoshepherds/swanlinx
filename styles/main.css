@@ -48,9 +48,12 @@ table {
     margin-left: 12px; }
   100% {
     margin-left: 0px; } }
-html,
-body {
+html {
   height: 100%; }
+
+body {
+  min-height: 100%;
+  overflow-x: hidden; }
 
 body {
   font-family: 'Abel', sans-serif;
@@ -58,8 +61,7 @@ body {
   font-size: 14px;
   background: #fff;
   text-rendering: optimizeLegibility;
-  line-height: 1.2;
-  min-height: 100%; }
+  line-height: 1.2; }
 
 h1 {
   font-size: 21px;
@@ -176,7 +178,8 @@ a.black {
   color: #fff;
   background: rgba(55, 58, 60, 0.8); }
   .overlay-helper.hidden {
-    opacity: 0; }
+    opacity: 0;
+    display: none; }
   .overlay-helper .content {
     padding: 6px;
     text-align: center; }
@@ -236,9 +239,11 @@ a.black {
       animation-timing-function: ease-in-out; }
 
 .app-wrapper {
-  position: relative;
-  height: 100%;
-  width: 100%; }
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0; }
 
 #map {
   position: absolute;
@@ -278,30 +283,31 @@ a.black {
   display: block;
   position: absolute;
   top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
+  left: -65%;
+  bottom: 0;
+  width: 65%;
   transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
   @media screen and (min-width: 768px) {
     .info-panel-container {
       display: none; } }
   .info-panel-container .info-panel-content {
-    opacity: 0; }
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%; }
     .info-panel-container .info-panel-content p {
       opacity: 0;
       height: 100%; }
     .info-panel-container .info-panel-content .close-btn {
       opacity: 0; }
   .info-panel-container.is-active {
-    width: 65%;
+    left: 0;
     z-index: 997;
     transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
     .info-panel-container.is-active .info-panel-content {
       opacity: 1;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
       width: 100%;
       background-color: #fff; }
       .info-panel-container.is-active .info-panel-content p {
@@ -369,10 +375,10 @@ a.black {
 .layer-panel-container {
   display: block;
   position: absolute;
-  width: 0;
+  width: 33.33%;
   height: 100%;
   top: 0;
-  right: 0px;
+  right: -33.33%;
   background-color: #75bad3;
   overflow-y: scroll;
   transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
@@ -414,9 +420,9 @@ a.black {
         left: 6px;
         opacity: 1; }
   .layer-panel-container.is-active {
-    width: 33.33%;
+    right: 0;
     z-index: 998;
-    transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
+    transition: right 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
     .layer-panel-container.is-active .layer-panel-content {
       opacity: 1;
       transition: opacity 0.4ss cubic-bezier(0.74, 0, 0.26, 1);
