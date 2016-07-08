@@ -95,7 +95,10 @@ a {
 a.black {
   color: #373a3c; }
 
-@media all and (orientation: landscape) {
+.user-rotate {
+  display: none; }
+
+@media all and (orientation: landscape) and (max-width: 750px) {
   .user-rotate {
     background-image: url(../media/screen-rotation-button.svg);
     background-position: center;
@@ -118,9 +121,28 @@ a.black {
       text-align: center;
       font-size: 16px; } }
 /* Styles for Portrait screen */
-@media all and (orientation: portrait) {
+@media all and (orientation: portrait) and (min-width: 750px) {
   .user-rotate {
-    display: none; } }
+    background-image: url(../media/screen-rotation-button.svg);
+    background-position: center;
+    background-size: 45px;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    color: #fff;
+    z-index: 999; }
+    .user-rotate span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%);
+      margin-top: 48px;
+      text-align: center;
+      font-size: 16px; } }
 /* Styles for Landscape screen */
 @keyframes blink {
   0% {
@@ -281,9 +303,9 @@ a.black {
   display: block;
   position: absolute;
   top: 0;
-  left: -65%;
+  left: -75%;
   bottom: 0;
-  width: 65%;
+  width: 75%;
   transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
   @media screen and (min-width: 768px) {
     .info-panel-container {
@@ -365,7 +387,7 @@ a.black {
     padding-top: 4px;
     width: 65px; }
   .layer-panel-btn.is-active {
-    right: 33.33%;
+    right: 65.5%;
     transition: right 0.3s cubic-bezier(0.74, 0, 0.26, 1); }
     .layer-panel-btn.is-active .layer-btn {
       background-image: url(../media/close-button-white.svg); }
@@ -373,10 +395,10 @@ a.black {
 .layer-panel-container {
   display: block;
   position: absolute;
-  width: 33.33%;
+  width: 66%;
   height: 100%;
   top: 0;
-  right: -33.33%;
+  right: -66%;
   background-color: #75bad3;
   overflow-y: scroll;
   transition: width 0.3s cubic-bezier(0.74, 0, 0.26, 1); }

@@ -53,39 +53,22 @@ a.black {
     color: $black;
 }
 
-@media all and (orientation: landscape) {
+.user-rotate {
+    display: none;
+}
+@media all and (orientation: landscape) and (max-width: 750px) {
     
     .user-rotate {
-        background-image: $screen-rotate;
-        background-position: center;
-        background-size: 45px;
-        background-repeat: no-repeat;
-        background-color: $portrait-background;
-        display: block;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        color: $white;
-        z-index: 999;
-        & span {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%);
-            margin-top: 48px;
-            text-align: center;
-            font-size: 16px;
-        }
+        @include rotate;
     }
     
     
 }/* Styles for Portrait screen */
 
-@media all and (orientation: portrait) {
+@media all and (orientation: portrait) and (min-width: 750px) {
     
     .user-rotate {
-        display: none;
+        @include rotate;
     }
     
 }/* Styles for Landscape screen */
@@ -287,9 +270,9 @@ a.black {
     display: block;
     position: absolute;
     top: 0;
-    left: -65%;
+    left: -75%;
     bottom: 0;
-    width: 65%;
+    width: 75%;
     @include transition('width', .3);
     @media screen and (min-width: 768px) {
         display: none;
@@ -383,7 +366,7 @@ a.black {
         width: $btn-width;
     }
     &.is-active {
-        right: 33.33%;
+        right: 65.5%;
         @include transition('right', .3);
         & .layer-btn {
             background-image: $close-icon-white;
@@ -394,10 +377,10 @@ a.black {
 .layer-panel-container {
     display: block;
     position: absolute;
-    width: 33.33%;
+    width: 66%;
     height: 100%;
     top: 0;
-    right: -33.33%;
+    right: -66%;
     background-color: $blue;
     overflow-y: scroll;
     @include transition('width', .3);

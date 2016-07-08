@@ -239,7 +239,7 @@ $(document).ready(function() {
         .translate([width / 2, height / 2]);
     
     if(width < 768) {
-        projection.scale(width * 85);
+        projection.scale(width * 110);
     } else {
         projection.scale(width * 65);
     }
@@ -511,7 +511,7 @@ $(document).ready(function() {
         projection.translate([ww / 2, wh / 2])
         
         if(ww < 768) {
-            projection.scale(ww * 85);
+            projection.scale(ww * 110);
         } else {
             projection.scale(ww * 65);
         }
