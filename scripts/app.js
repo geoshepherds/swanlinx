@@ -33,6 +33,9 @@ $(document).ready(function() {
     
     $('.user-confirm').click(function() {
         $(this).parent().addClass('hidden');
+        
+        
+        $('body').scrollTop('1%');
     });
     
     

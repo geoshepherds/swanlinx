@@ -2,9 +2,6 @@
 html {
     height: 100%;
 }
-body {
-    min-height: 100%;
-}
 
 body {
     font-family: 'Abel', sans-serif;
@@ -13,6 +10,7 @@ body {
     background: $white;
     text-rendering: optimizeLegibility;
     line-height: 1.2;
+    min-height: 101%;
 }
 
 h1 {
@@ -303,6 +301,7 @@ a.black {
         left: 0;
         bottom: 0;
         width: 100%;
+        font-size: $font-size - 2;
         & p {
             opacity: 0;
         }
